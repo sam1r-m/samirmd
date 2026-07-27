@@ -4,16 +4,883 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Photography — Samir Mohammed</title>
+    <meta
+      name="description"
+      content="Photographs by Samir Mohammed — landscapes and places."
+    />
     <link rel="icon" href="favicon.ico" sizes="any" />
     <link rel="stylesheet" href="assets/styles.css" />
-    <script src="assets/backdrop.js" defer></script>
+    <link rel="stylesheet" href="assets/photography.css" />
     <script src="assets/vercel-insights.js" defer></script>
+    <script src="assets/photography.js" defer></script>
   </head>
-  <body>
+  <body class="page-photography" data-view="masonry">
     <main>
-      <p><a href="index.html">← Home</a></p>
-      <h1>Photography</h1>
-      <p>Building out a lazy-scroll gallery...</p>
+      <header class="photo-header">
+        <div class="photo-header-top">
+          <a class="home-link" href="index.html">Home</a>
+          <div class="gallery-controls">
+            <div class="sort-toggle" role="group" aria-label="Sort photographs">
+              <button type="button" data-sort="newest" aria-pressed="true" aria-label="Newest first" title="Newest first">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M8 2.25v9.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M4.6 8.6 8 12.1l3.4-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <button type="button" data-sort="oldest" aria-pressed="false" aria-label="Oldest first" title="Oldest first">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M8 13.75V4.65" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M4.6 7.4 8 3.9l3.4 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <button type="button" data-sort="shuffle" aria-pressed="false" aria-label="Shuffle" title="Shuffle">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M3.1 5.2A5.1 5.1 0 0 1 11.6 4.1l1.1 1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M10.2 2.4h2.9V5.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M12.9 10.8A5.1 5.1 0 0 1 4.4 11.9L3.3 10.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5.8 13.6H2.9V10.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+            <div class="view-toggle" role="group" aria-label="Gallery layout">
+              <button type="button" data-view="masonry" aria-pressed="true" aria-label="Masonry layout" title="Masonry">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <rect x="1" y="1" width="6" height="9" rx="0.5" />
+                  <rect x="9" y="1" width="6" height="5" rx="0.5" />
+                  <rect x="9" y="8" width="6" height="7" rx="0.5" />
+                  <rect x="1" y="12" width="6" height="3" rx="0.5" />
+                </svg>
+              </button>
+              <button type="button" data-view="grid" aria-pressed="false" aria-label="Grid layout" title="Grid">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <rect x="1" y="1" width="6" height="6" rx="0.5" />
+                  <rect x="9" y="1" width="6" height="6" rx="0.5" />
+                  <rect x="1" y="9" width="6" height="6" rx="0.5" />
+                  <rect x="9" y="9" width="6" height="6" rx="0.5" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <h1>Photography</h1>
+        <p class="lede">A small set of places, held in the light that found them.</p>
+      </header>
+
+      <section class="photo-gallery" aria-label="Photograph gallery">
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-17">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge: Night street"
+          >
+            <img
+              src="assets/photos/web/DSC_4079.jpg"
+              alt="Narrow street at night under blue light"
+              width="2560"
+              height="1696"
+              loading="eager"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            <span class="caption-title">Night street</span>
+            <span class="caption-context">Feb 17, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/4 · 1/60 · ISO 400 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="tall" data-taken="2026-02-19">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4317.jpg"
+              alt="Desert photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 19, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/2500 · ISO 100 · 66mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-19">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4321.jpg"
+              alt="Desert photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 19, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/6400 · ISO 100 · 26mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-19">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4322.jpg"
+              alt="Desert photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 19, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/8000 · ISO 100 · 52mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="tall" data-taken="2014-04-03">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_0694.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Apr 3, 2014 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/1000 · ISO 160 · 66mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2017-11-02">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_0930.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Nov 2, 2017 · Nikon D7000</span>
+            <span class="caption-tech">f/9 · 1/320 · ISO 100 · 38mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2024-10-17">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_2901.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Oct 17, 2024 · Nikon D7000</span>
+            <span class="caption-tech">f/3.5 · 1/50 · ISO 800 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="tall" data-taken="2025-02-23">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_3373.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 23, 2025 · Nikon D7000</span>
+            <span class="caption-tech">f/3.5 · 1/10 · ISO 1600 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2025-04-29">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_3417.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Apr 29, 2025 · Nikon D7000</span>
+            <span class="caption-tech">f/4.2 · 1/60 · ISO 400 · 32mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2025-06-07">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_3437.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Jun 7, 2025 · Nikon D7000</span>
+            <span class="caption-tech">f/3.8 · 1/3 · ISO 1600 · 22mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="portrait" data-taken="2025-06-08">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_3460.jpg"
+              alt="Photograph"
+              width="1696"
+              height="2560"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Jun 8, 2025 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/250 · ISO 100 · 26mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2025-06-08">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_3467.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Jun 8, 2025 · Nikon D7000</span>
+            <span class="caption-tech">f/7.1 · 1/800 · ISO 200 · 62mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2025-06-21">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_3480.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Jun 21, 2025 · Nikon D7000</span>
+            <span class="caption-tech">f/4 · 1/60 · ISO 450 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="portrait" data-taken="2025-06-21">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_3486.jpg"
+              alt="Photograph"
+              width="1696"
+              height="2560"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Jun 21, 2025 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/250 · ISO 100 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="portrait" data-taken="2025-06-21">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_3492.jpg"
+              alt="Photograph"
+              width="1696"
+              height="2560"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Jun 21, 2025 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/250 · ISO 200 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2025-06-22">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_3518.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Jun 22, 2025 · Nikon D7000</span>
+            <span class="caption-tech">f/5 · 1/100 · ISO 400 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="tall" data-taken="2025-06-23">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_3530.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Jun 23, 2025 · Nikon D7000</span>
+            <span class="caption-tech">f/4.5 · 1/80 · ISO 400 · 26mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2025-06-23">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_3557.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Jun 23, 2025 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/250 · ISO 200 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-17">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4097.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 17, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/4.2 · 1/40 · ISO 800 · 32mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="tall" data-taken="2026-02-18">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4181.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 18, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/5.6 · 1/125 · ISO 250 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-18">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4185.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 18, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/5.6 · 1/500 · ISO 280 · 90mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="portrait" data-taken="2026-02-18">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4213.jpg"
+              alt="Photograph"
+              width="1696"
+              height="2560"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 18, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/9 · 1/320 · ISO 100 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="tall" data-taken="2026-02-18">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4251.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 18, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/400 · ISO 160 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-18">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4264.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 18, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/640 · ISO 160 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-18">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4265.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 18, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/320 · ISO 160 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="tall" data-taken="2026-02-18">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4266.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 18, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/1250 · ISO 400 · 34mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-18">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4267.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 18, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/4000 · ISO 400 · 105mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-18">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4274.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 18, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/9 · 1/80 · ISO 400 · 28mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="tall" data-taken="2026-02-19">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4349.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 19, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/5.6 · 1/50 · ISO 250 · 85mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-20">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4359.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 20, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/4.5 · 1/500 · ISO 160 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-20">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4374.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 20, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/6.3 · 1/60 · ISO 200 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="tall" data-taken="2026-02-20">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4385.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 20, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/9 · 1/160 · ISO 160 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="land" data-taken="2026-02-20">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4402.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 20, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/100 · ISO 500 · 18mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="portrait" data-taken="2026-02-20">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4412.jpg"
+              alt="Photograph"
+              width="1696"
+              height="2560"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 20, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/8 · 1/200 · ISO 500 · 34mm</span>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-figure" data-size="default" data-tile="tall" data-taken="2026-02-21">
+          <button
+            type="button"
+            class="photo-button"
+            aria-label="Enlarge photograph"
+          >
+            <img
+              src="assets/photos/web/DSC_4440.jpg"
+              alt="Photograph"
+              width="2560"
+              height="1696"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          <figcaption class="photo-caption">
+            
+            <span class="caption-context">Feb 21, 2026 · Nikon D7000</span>
+            <span class="caption-tech">f/10 · 1/5 · ISO 800 · 32mm</span>
+          </figcaption>
+        </figure>
+      </section>
     </main>
+
+    <div
+      id="lightbox"
+      class="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-label="Enlarged photograph"
+    >
+      <button
+        type="button"
+        id="lightbox-close"
+        class="lightbox-close"
+        aria-label="Close"
+      >
+        ×
+      </button>
+      <button
+        type="button"
+        id="lightbox-prev"
+        class="lightbox-nav lightbox-prev"
+        aria-label="Previous photograph"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        id="lightbox-next"
+        class="lightbox-nav lightbox-next"
+        aria-label="Next photograph"
+      >
+        ›
+      </button>
+      <div class="lightbox-inner">
+        <img
+          id="lightbox-image"
+          src="assets/photos/web/DSC_4079.jpg"
+          alt=""
+          width="2560"
+          height="1696"
+        />
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+      </div>
+    </div>
   </body>
 </html>
