@@ -244,6 +244,20 @@
       "alt": "Photograph",
       "location": "",
       "size": "default"
+    },
+    {
+      "id": "XT300057",
+      "title": "Untitled",
+      "alt": "Photograph",
+      "location": "",
+      "size": "inset"
+    },
+    {
+      "id": "XT300103",
+      "title": "Untitled",
+      "alt": "Photograph",
+      "location": "",
+      "size": "left"
     }
   ]
 }
