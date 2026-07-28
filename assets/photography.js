@@ -13,6 +13,7 @@
   var btnNext = document.getElementById("lightbox-next");
   var activeIndex = -1;
   var lastFocus = null;
+  var resizeTimer = null;
   var reduceMotion =
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -20,6 +21,40 @@
   var SORT_KEY = "samirmd-photo-sort";
   var VIEWS = ["masonry", "grid"];
   var SORTS = ["newest", "oldest", "shuffle"];
+
+  function columnCount() {
+    var width = window.innerWidth;
+    if (width >= 1024) return 3;
+    if (width >= 640) return 2;
+    return 1;
+  }
+
+  function applyLayout() {
+    var view = document.body.getAttribute("data-view");
+    var cols = gallery.querySelectorAll(".photo-col");
+    Array.prototype.forEach.call(cols, function (col) {
+      col.parentNode && col.parentNode.removeChild(col);
+    });
+
+    if (view !== "masonry") {
+      figures.forEach(function (fig) {
+        gallery.appendChild(fig);
+      });
+      return;
+    }
+
+    var n = columnCount();
+    var buckets = [];
+    for (var i = 0; i < n; i += 1) {
+      var col = document.createElement("div");
+      col.className = "photo-col";
+      gallery.appendChild(col);
+      buckets.push(col);
+    }
+    figures.forEach(function (fig, index) {
+      buckets[index % n].appendChild(fig);
+    });
+  }
 
   function setView(view) {
     if (view === "sheet" || view === "fill") view = "masonry";
@@ -33,6 +68,7 @@
       var on = btn.getAttribute("data-view") === view;
       btn.setAttribute("aria-pressed", on ? "true" : "false");
     });
+    applyLayout();
   }
 
   var savedView = "masonry";
@@ -49,6 +85,11 @@
       setView(btn.getAttribute("data-view"));
     });
   }
+
+  window.addEventListener("resize", function () {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(applyLayout, 120);
+  });
 
   function takenValue(figure) {
     return figure.getAttribute("data-taken") || "";
@@ -90,9 +131,7 @@
 
   function applyOrder(ordered) {
     figures = ordered;
-    figures.forEach(function (fig) {
-      gallery.appendChild(fig);
-    });
+    applyLayout();
     bindFigureClicks();
   }
 

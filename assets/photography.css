@@ -1,9 +1,3 @@
-@font-face {
-  font-family: "Iowan Old Style";
-  src: local("Iowan Old Style"), local("Palatino Linotype"), local("Palatino"),
-    local("Book Antiqua");
-}
-
 body.page-photography {
   --photo-bg: #0d0c0b;
   --photo-fg: #f4efe6;
@@ -11,13 +5,20 @@ body.page-photography {
   --photo-soft: #cfc4b5;
   --photo-line: rgba(244, 239, 230, 0.1);
   --photo-sand: #d2b48c;
+  --photo-surface: #161310;
+  --photo-veil: rgba(6, 5, 4, 0.78);
+  --photo-control-fill: rgba(255, 255, 255, 0.02);
   --photo-gap: 1.5rem;
   --photo-shadow: 0 20px 44px rgba(0, 0, 0, 0.5);
+  --font-serif: Newsreader, Georgia, "Times New Roman", Times, serif;
+  --font-sans: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background:
     radial-gradient(120% 80% at 50% -10%, #1a1612 0%, transparent 55%),
     var(--photo-bg);
   color: var(--photo-fg);
-  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  color-scheme: dark;
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
 }
 
 body.page-photography main {
@@ -45,7 +46,8 @@ body.page-photography a:hover {
 .photo-header {
   width: min(90vw, 70rem);
   margin: 0 auto;
-  padding: 3.25rem 0 2.25rem;
+  padding: 3.25rem 0 1.75rem;
+  border-bottom: 1px solid var(--photo-line);
 }
 
 .photo-header-top {
@@ -58,7 +60,9 @@ body.page-photography a:hover {
 
 .photo-header .home-link {
   display: inline-block;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--photo-muted);
@@ -75,10 +79,11 @@ body.page-photography a:hover {
 .sort-toggle,
 .view-toggle {
   display: inline-flex;
-  gap: 0.15rem;
-  padding: 0.2rem;
+  gap: 0.2rem;
+  padding: 0.28rem;
   border: 1px solid var(--photo-line);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--photo-control-fill);
+  border-radius: 999px;
 }
 
 .sort-toggle button,
@@ -87,29 +92,22 @@ body.page-photography a:hover {
   border: 0;
   background: transparent;
   color: var(--photo-muted);
+  padding: 0.52rem;
   cursor: pointer;
+  line-height: 0;
   display: grid;
   place-items: center;
-  font: inherit;
+  border-radius: 999px;
 }
 
-.sort-toggle button {
-  padding: 0.35rem 0.55rem;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-.view-toggle button {
-  padding: 0.4rem;
-  line-height: 0;
-}
-
+.sort-toggle button svg,
 .view-toggle button svg {
   width: 1rem;
   height: 1rem;
   display: block;
+}
+
+.view-toggle button svg {
   fill: currentColor;
 }
 
@@ -126,37 +124,35 @@ body.page-photography a:hover {
 }
 
 @media (max-width: 639px) {
-  .view-toggle {
+  .gallery-controls {
     display: none;
+  }
+
+  .photo-header {
+    padding: 2.25rem 0 1.35rem;
+  }
+
+  .photo-header h1 {
+    font-size: clamp(2.6rem, 14vw, 3.4rem);
+  }
+
+  .photo-gallery {
+    width: min(92vw, 70rem);
+    padding: 1.25rem 0 5.5rem;
+  }
+
+  body.page-photography {
+    --photo-gap: 1.25rem;
   }
 }
 
 .photo-header h1 {
   margin: 1.35rem 0 0;
-  font-size: clamp(3rem, 9vw, 6rem);
-  font-weight: 400;
-  font-style: italic;
-  line-height: 0.92;
-  letter-spacing: -0.04em;
-}
-
-.photo-header .lede {
-  margin-top: 1.1rem;
-  max-width: 26rem;
-  color: var(--photo-soft);
-  font-size: 1rem;
-  line-height: 1.55;
-  font-weight: 400;
-}
-
-.photo-header::after {
-  content: "";
-  display: block;
-  width: 3.5rem;
-  height: 1px;
-  margin-top: 1.75rem;
-  background: var(--photo-sand);
-  opacity: 0.55;
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 9vw, 5.75rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
 }
 
 .photo-gallery {
@@ -167,47 +163,40 @@ body.page-photography a:hover {
 }
 
 body[data-view="masonry"] .photo-gallery {
-  columns: 1;
-  column-gap: var(--photo-gap);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--photo-gap);
 }
 
-@media (min-width: 640px) {
-  body[data-view="masonry"] .photo-gallery {
-    columns: 2;
-  }
-}
-
-@media (min-width: 1024px) {
-  body[data-view="masonry"] .photo-gallery {
-    columns: 3;
-  }
+body[data-view="masonry"] .photo-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--photo-gap);
 }
 
 body[data-view="masonry"] .photo-figure {
-  display: inline-block;
+  margin: 0;
   width: 100%;
-  margin: 0 0 var(--photo-gap);
-  break-inside: avoid;
 }
 
 body[data-view="grid"] .photo-gallery {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.15rem;
+  gap: var(--photo-gap);
   align-items: start;
 }
 
 @media (min-width: 640px) {
   body[data-view="grid"] .photo-gallery {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
   }
 }
 
 @media (min-width: 1024px) {
   body[data-view="grid"] .photo-gallery {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.35rem;
   }
 }
 
@@ -238,13 +227,13 @@ body[data-view="grid"] .photo-figure {
   width: 100%;
   padding: 0;
   border: 0;
-  background: #161310;
+  background: var(--photo-surface);
   cursor: zoom-in;
   text-align: left;
   border-radius: 0;
   overflow: hidden;
   transform-origin: center center;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: 0 1px 0 var(--photo-line);
   transition:
     transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -266,7 +255,7 @@ body[data-view="grid"] .photo-figure {
   width: 100%;
   height: auto;
   vertical-align: middle;
-  background: #161310;
+  background: var(--photo-surface);
 }
 
 .photo-caption {
@@ -275,17 +264,20 @@ body[data-view="grid"] .photo-figure {
   flex-direction: column;
   gap: 0.18rem;
   min-height: 2.6rem;
+  font-family: var(--font-sans);
 }
 
 .photo-caption .caption-title {
+  font-family: var(--font-sans);
   font-size: 0.92rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.3;
   letter-spacing: 0.01em;
   color: var(--photo-fg);
 }
 
 .photo-caption .caption-context {
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 400;
   font-style: normal;
@@ -295,9 +287,10 @@ body[data-view="grid"] .photo-figure {
 }
 
 .photo-caption .caption-tech {
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   line-height: 1.4;
   letter-spacing: 0.015em;
   color: var(--photo-muted);
@@ -310,11 +303,13 @@ body[data-view="grid"] .photo-figure {
   display: grid;
   place-items: center;
   padding: 1.5rem;
-  background: rgba(6, 5, 4, 0.78);
+  background: var(--photo-veil);
   backdrop-filter: blur(10px);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.28s ease, visibility 0.28s ease;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .lightbox.is-open {
@@ -325,7 +320,7 @@ body[data-view="grid"] .photo-figure {
 .lightbox-inner {
   position: relative;
   width: min(100%, 40rem);
-  max-height: 78vh;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -340,12 +335,13 @@ body[data-view="grid"] .photo-figure {
 
 .lightbox img {
   display: block;
+  box-sizing: border-box;
   max-width: 100%;
-  max-height: calc(78vh - 5rem);
   width: auto;
   height: auto;
+  max-height: min(72vh, 900px);
   object-fit: contain;
-  background: #0a0908;
+  background: var(--photo-surface);
   box-shadow: var(--photo-shadow);
 }
 
@@ -357,22 +353,26 @@ body[data-view="grid"] .photo-figure {
   flex-direction: column;
   gap: 0.15rem;
   align-items: center;
+  font-family: var(--font-sans);
 }
 
 .lightbox-caption .caption-title {
+  font-family: var(--font-sans);
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--photo-fg);
 }
 
 .lightbox-caption .caption-context {
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   color: var(--photo-soft);
 }
 
 .lightbox-caption .caption-tech {
+  font-family: var(--font-sans);
   font-size: 0.72rem;
-  font-style: italic;
+  font-style: normal;
   color: var(--photo-muted);
 }
 
@@ -421,6 +421,23 @@ body[data-view="grid"] .photo-figure {
 }
 
 @media (max-width: 719px) {
+  .lightbox {
+    padding: 3.25rem 0.85rem 1.5rem;
+    align-content: center;
+  }
+
+  .lightbox-inner {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .lightbox img {
+    width: 100%;
+    max-width: 100%;
+    max-height: min(68vh, 100dvh - 9rem);
+    height: auto;
+  }
+
   .lightbox-prev {
     left: 0.15rem;
   }

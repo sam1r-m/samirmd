@@ -336,6 +336,12 @@ const html = `<!DOCTYPE html>
       content="Photographs by Samir Mohammed — landscapes and places."
     />
     <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/styles.css" />
     <link rel="stylesheet" href="assets/photography.css" />
     <script src="assets/vercel-insights.js" defer></script>
@@ -348,9 +354,26 @@ const html = `<!DOCTYPE html>
           <a class="home-link" href="index.html">Home</a>
           <div class="gallery-controls">
             <div class="sort-toggle" role="group" aria-label="Sort photographs">
-              <button type="button" data-sort="newest" aria-pressed="true">Newest</button>
-              <button type="button" data-sort="oldest" aria-pressed="false">Oldest</button>
-              <button type="button" data-sort="shuffle" aria-pressed="false">Shuffle</button>
+              <button type="button" data-sort="newest" aria-pressed="true" aria-label="Newest first" title="Newest first">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M8 2.25v9.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M4.6 8.6 8 12.1l3.4-3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <button type="button" data-sort="oldest" aria-pressed="false" aria-label="Oldest first" title="Oldest first">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M8 13.75V4.65" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M4.6 7.4 8 3.9l3.4 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <button type="button" data-sort="shuffle" aria-pressed="false" aria-label="Shuffle" title="Shuffle">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M3.1 5.2A5.1 5.1 0 0 1 11.6 4.1l1.1 1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M10.2 2.4h2.9V5.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M12.9 10.8A5.1 5.1 0 0 1 4.4 11.9L3.3 10.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5.8 13.6H2.9V10.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
             </div>
             <div class="view-toggle" role="group" aria-label="Gallery layout">
               <button type="button" data-view="masonry" aria-pressed="true" aria-label="Masonry layout" title="Masonry">
@@ -373,7 +396,6 @@ const html = `<!DOCTYPE html>
           </div>
         </div>
         <h1>Photography</h1>
-        <p class="lede">A small set of places, held in the light that found them.</p>
       </header>
 
       <section class="photo-gallery" aria-label="Photograph gallery">
