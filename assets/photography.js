@@ -76,7 +76,6 @@
   }
 
   function setView(view) {
-    if (view === "sheet" || view === "fill") view = "masonry";
     if (VIEWS.indexOf(view) === -1) view = "masonry";
     document.body.setAttribute("data-view", view);
     try {
@@ -303,8 +302,6 @@
     var next = (activeIndex + delta + figures.length) % figures.length;
     openAt(next);
   }
-
-  bindFigureClicks();
 
   btnClose.addEventListener("click", close);
   btnPrev.addEventListener("click", function () {
