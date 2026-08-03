@@ -29,6 +29,16 @@
     return 1;
   }
 
+  function estimateFigureHeight(fig) {
+    var img = fig.querySelector("img");
+    var w = img ? Number(img.getAttribute("width")) || 0 : 0;
+    var h = img ? Number(img.getAttribute("height")) || 0 : 0;
+    var ratio = w > 0 && h > 0 ? h / w : 0.75;
+    var caption = fig.querySelector(".photo-caption");
+    var captionH = caption ? 56 : 0;
+    return ratio * 1000 + captionH;
+  }
+
   function applyLayout() {
     var view = document.body.getAttribute("data-view");
     var cols = gallery.querySelectorAll(".photo-col");
@@ -45,14 +55,23 @@
 
     var n = columnCount();
     var buckets = [];
+    var heights = [];
     for (var i = 0; i < n; i += 1) {
       var col = document.createElement("div");
       col.className = "photo-col";
       gallery.appendChild(col);
       buckets.push(col);
+      heights.push(0);
     }
-    figures.forEach(function (fig, index) {
-      buckets[index % n].appendChild(fig);
+
+    var gap = 24;
+    figures.forEach(function (fig) {
+      var shortest = 0;
+      for (var c = 1; c < n; c += 1) {
+        if (heights[c] < heights[shortest]) shortest = c;
+      }
+      buckets[shortest].appendChild(fig);
+      heights[shortest] += estimateFigureHeight(fig) + gap;
     });
   }
 
@@ -175,30 +194,79 @@
     });
   }
 
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    var reveal = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          var el = entry.target;
-          var delay = Number(el.dataset.revealDelay || 0);
-          window.setTimeout(function () {
-            el.classList.add("is-visible");
-          }, delay);
-          reveal.unobserve(el);
-        });
-      },
-      { rootMargin: "0px 0px -6% 0px", threshold: 0.05 }
-    );
-    figures.forEach(function (fig, i) {
-      fig.dataset.revealDelay = String(Math.min(i % 3, 2) * 70);
-      reveal.observe(fig);
-    });
-  } else {
-    figures.forEach(function (fig) {
+  function whenImageReady(img, done) {
+    if (!img) {
+      done();
+      return;
+    }
+    var finish = function () {
+      if (img.decode) {
+        img.decode().then(done, done);
+      } else {
+        done();
+      }
+    };
+    if (img.complete && img.naturalWidth > 0) {
+      finish();
+      return;
+    }
+    var onLoad = function () {
+      img.removeEventListener("load", onLoad);
+      img.removeEventListener("error", onError);
+      finish();
+    };
+    var onError = function () {
+      img.removeEventListener("load", onLoad);
+      img.removeEventListener("error", onError);
+      done();
+    };
+    img.addEventListener("load", onLoad);
+    img.addEventListener("error", onError);
+  }
+
+  function revealFigure(fig, delay) {
+    if (fig.classList.contains("is-visible")) return;
+    window.setTimeout(function () {
       fig.classList.add("is-visible");
+    }, delay || 0);
+  }
+
+  function watchReveals() {
+    figures.forEach(function (fig, i) {
+      var img = fig.querySelector("img");
+      var delay = reduceMotion ? 0 : Math.min(i % 4, 3) * 60;
+      var imageReady = false;
+      var inView = reduceMotion || !("IntersectionObserver" in window);
+
+      var tryReveal = function () {
+        if (imageReady && inView) revealFigure(fig, delay);
+      };
+
+      whenImageReady(img, function () {
+        imageReady = true;
+        tryReveal();
+      });
+
+      if (!inView) {
+        var reveal = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              inView = true;
+              tryReveal();
+              reveal.unobserve(entry.target);
+            });
+          },
+          { rootMargin: "12% 0px", threshold: 0.01 }
+        );
+        reveal.observe(fig);
+      } else {
+        tryReveal();
+      }
     });
   }
+
+  watchReveals();
 
   function captionHtml(figure) {
     var cap = figure.querySelector(".photo-caption");

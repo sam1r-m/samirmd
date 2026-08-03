@@ -207,19 +207,6 @@ body[data-view="grid"] .photo-figure {
 
 .photo-figure {
   position: relative;
-  opacity: 0;
-  transform: translateY(0.85rem);
-  filter: blur(5px);
-  transition:
-    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.photo-figure.is-visible {
-  opacity: 1;
-  transform: none;
-  filter: none;
 }
 
 .photo-button {
@@ -233,7 +220,7 @@ body[data-view="grid"] .photo-figure {
   border-radius: 0;
   overflow: hidden;
   transform-origin: center center;
-  box-shadow: 0 1px 0 var(--photo-line);
+  box-shadow: none;
   transition:
     transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -256,6 +243,12 @@ body[data-view="grid"] .photo-figure {
   height: auto;
   vertical-align: middle;
   background: var(--photo-surface);
+  opacity: 0;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-figure.is-visible .photo-button img {
+  opacity: 1;
 }
 
 .photo-caption {
@@ -265,6 +258,16 @@ body[data-view="grid"] .photo-figure {
   gap: 0.18rem;
   min-height: 2.6rem;
   font-family: var(--font-sans);
+  opacity: 0;
+  transform: translateY(0.35rem);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.photo-figure.is-visible .photo-caption {
+  opacity: 1;
+  transform: none;
 }
 
 .photo-caption .caption-title {
@@ -457,8 +460,9 @@ body.lightbox-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .photo-figure,
   .photo-button,
+  .photo-button img,
+  .photo-caption,
   .lightbox,
   .lightbox-inner {
     transition: none;
@@ -466,7 +470,8 @@ body.lightbox-open {
     transform: none;
   }
 
-  .photo-figure {
+  .photo-button img,
+  .photo-caption {
     opacity: 1;
   }
 
