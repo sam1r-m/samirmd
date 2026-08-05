@@ -1,3 +1,17 @@
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 260ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html:has(body.page-photography) {
+  background: #0d0c0b;
+}
+
 body.page-photography {
   --photo-bg: #0d0c0b;
   --photo-fg: #f4efe6;
@@ -299,6 +313,23 @@ body[data-view="grid"] .photo-figure {
   color: var(--photo-muted);
 }
 
+.photo-count {
+  width: min(90vw, 70rem);
+  margin: -5.5rem auto 0;
+  padding: 0 0 4rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--photo-muted);
+}
+
+@media (max-width: 639px) {
+  .photo-count {
+    width: min(92vw, 70rem);
+    margin-top: -3.5rem;
+  }
+}
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -460,6 +491,11 @@ body.lightbox-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 1ms;
+  }
+
   .photo-button,
   .photo-button img,
   .photo-caption,

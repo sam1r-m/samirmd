@@ -6,61 +6,296 @@
     <title>Samir Mohammed</title>
     <meta
       name="description"
-      content="Computational Mathematics student at the University of Waterloo."
+      content="Student at the University of Waterloo studying computational mathematics, minoring in economics and computer science."
     />
+    <meta name="theme-color" content="#f7f4ed" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Samir Mohammed" />
+    <meta
+      property="og:description"
+      content="Student at the University of Waterloo studying computational mathematics, minoring in economics and computer science."
+    />
+    <meta property="og:url" content="https://samirmd.com/" />
+    <meta property="og:image" content="https://samirmd.com/assets/og.png" />
+    <meta property="og:image:width" content="1200" /> 
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Samir Mohammed. Student at the University of Waterloo studying computational mathematics."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://samirmd.com/" />
     <link rel="icon" href="favicon.ico" sizes="any" />
-    <link rel="stylesheet" href="assets/styles.css" />
-    <script src="assets/backdrop.js" defer></script>
+    <link rel="stylesheet" href="assets/index.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Samir Mohammed",
+        "alternateName": "Samir M.",
+        "url": "https://samirmd.com/",
+        "description": "Computational mathematics student at the University of Waterloo, minoring in economics and computer science.",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Waterloo",
+          "url": "https://uwaterloo.ca/"
+        },
+        "sameAs": ["https://github.com/sam1r-m"]
+      }
+    </script>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("samirmd-theme");
+          if (stored === "light" || stored === "dark") {
+            document.documentElement.setAttribute("data-theme", stored);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <script src="assets/vercel-insights.js" defer></script>
+    <script src="assets/index.js" defer></script>
   </head>
   <body>
-    <main>
-      <h1>
-        <strong class="site-name">Samir Mohammed</strong> |
-        <span class="degree-highlight">BMath</span> @
-        <span class="title-uw">UW</span>aterloo
-      </h1>
+    <div class="page">
+      <header class="masthead">
+        <h1 id="name">Samir M.</h1>
+        <button
+          type="button"
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Switch theme"
+        >
+          <svg class="icon-sun" viewBox="0 0 16 16" aria-hidden="true">
+            <circle
+              cx="8"
+              cy="8"
+              r="3.1"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <path
+              d="M8 1.4v1.5M8 13.1v1.5M14.6 8h-1.5M2.9 8H1.4M12.67 3.33l-1.06 1.06M4.39 11.61l-1.06 1.06M12.67 12.67l-1.06-1.06M4.39 4.39 3.33 3.33"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M13.5 9.7A5.9 5.9 0 0 1 6.3 2.5a5.9 5.9 0 1 0 7.2 7.2Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </header>
 
-      <p>
-        <a href="film.html">Film</a>. <a href="music.html">Music</a>.
-        <a href="books.html">Books</a>. <a href="tv.html">TV</a>.
-        <a href="photography.html">Photography</a>. I also
-        <a href="writing.html">write</a>. —
-        <a href="Samir_Resume.pdf">Resume</a>.
-      </p>
+      <main>
+        <div class="intro">
+          <p>
+            I'm a student at the
+            <a
+              class="hl hl-gold"
+              href="https://uwaterloo.ca/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >University of Waterloo<span class="sr-only">
+                (opens in a new tab)</span
+              ></a
+            >
+            studying
+            <span class="hl hl-pink">computational mathematics</span>, minoring
+            in economics and computer science.
+          </p>
+          <!--
+          <p>
+            I build small tools and give each one its own subdomain. I also take
+            photographs, mostly of places and rarely of people.
+          </p>
+          -->
+        </div>
 
-      <p>
-        I'm a student at the
+        <ul class="index">
+          <li>
+            <a href="photography.html">
+              <span class="row-title">Photography</span>
+            </a>
+            <ul class="gear">
+              <li>Nikon D7000 · 18-105mm f/3.5-5.6</li>
+              <li>Fujifilm X-T30 III · 13-33mm f/3.5-6.3</li>
+            </ul>
+          </li>
+          <li class="is-empty">
+            <span class="row-title">Writing</span>
+            <p>In the process of moving my writing here.</p>
+          </li>
+          <li>
+            <a href="projects.html">
+              <span class="row-title">Projects</span>
+            </a>
+            <p>WIP.</p>
+          </li>
+          <li class="row-drop">
+            <details>
+              <summary>
+                <span class="summary-line">
+                  <span class="row-title">Experience</span>
+                  <svg class="chev" viewBox="0 0 12 12" aria-hidden="true">
+                    <path
+                      d="M2.7 4.6 6 7.9l3.3-3.3"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span class="drop-sub">Six roles since 2024.</span>
+              </summary>
+              <ul class="roles">
+                <li>
+                  <img
+                    class="logo"
+                    src="assets/logos/super.png"
+                    alt=""
+                    width="34"
+                    height="34"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="role-body">
+                    <span class="role">Incoming Fall Intern</span>
+                    <span class="role-meta">Super.com · Jul 2026 – Present</span>
+                  </span>
+                </li>
+                <li>
+                  <img
+                    class="logo"
+                    src="assets/logos/capitalone.png"
+                    alt=""
+                    width="34"
+                    height="34"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="role-body">
+                    <span class="role">Strategy Analyst</span>
+                    <span class="role-meta">Capital One · May 2026 – Present</span>
+                  </span>
+                </li>
+                <li>
+                  <img
+                    class="logo"
+                    src="assets/logos/watai.png"
+                    alt=""
+                    width="34"
+                    height="34"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="role-body">
+                    <span class="role">Machine Learning Researcher</span>
+                    <span class="role-meta">WAT.ai · May 2026 – Present</span>
+                  </span>
+                </li>
+                <li>
+                  <img
+                    class="logo"
+                    src="assets/logos/capitalone.png"
+                    alt=""
+                    width="34"
+                    height="34"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="role-body">
+                    <span class="role">Strategy Analyst</span>
+                    <span class="role-meta">Capital One · Sep – Dec 2025</span>
+                  </span>
+                </li>
+                <li>
+                  <img
+                    class="logo"
+                    src="assets/logos/communitech.png"
+                    alt=""
+                    width="34"
+                    height="34"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="role-body">
+                    <span class="role">Business Analyst</span>
+                    <span class="role-meta">Communitech · Jan – Apr 2025</span>
+                  </span>
+                </li>
+                <li>
+                  <img
+                    class="logo"
+                    src="assets/logos/neostats.png"
+                    alt=""
+                    width="34"
+                    height="34"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="role-body">
+                    <span class="role">Data Science Intern</span>
+                    <span class="role-meta">NeoStats · May – Aug 2024</span>
+                  </span>
+                </li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </main>
+
+      <footer>
+        <a href="Samir_Resume.pdf">
+          Résumé <span class="format">PDF</span>
+        </a>
         <a
-          href="https://uwaterloo.ca/"
+          href="https://github.com/sam1r-m"
           target="_blank"
           rel="noopener noreferrer"
-          >University of Waterloo</a
-        >
-        studying computational mathematics, minoring in economics and computer science. </p>
-        
-      <p>This domain is currently serving as a light placeholder;
-        more in depth projects (obsidian notes, tools, etc.) will live on subdomains built with
-        their own stacks.
-      </p>
-
-      <p>
-        For now, check out the 
+          ><span class="nowrap"
+            >GitHub<svg viewBox="0 0 12 12" aria-hidden="true">
+              <path
+                d="M3.4 8.6 8.6 3.4M4.15 3.4H8.6V7.85"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg></span
+          ><span class="sr-only">(opens in a new tab)</span>
+        </a>
         <a
-          href="https://blackjack.samirmd.com/"
+          href="https://www.linkedin.com/in/samir-mohd/"
           target="_blank"
           rel="noopener noreferrer"
-          >blackjack</a
-        >
-        and
-        <a
-          href="https://ascii.samirmd.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >ascii</a
-        >
-        subdomains.
-      </p>
-    </main>
+          ><span class="nowrap"
+            >LinkedIn<svg viewBox="0 0 12 12" aria-hidden="true">
+              <path
+                d="M3.4 8.6 8.6 3.4M4.15 3.4H8.6V7.85"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg></span
+          ><span class="sr-only">(opens in a new tab)</span>
+        </a>
+        <span class="pending">Email</span>
+      </footer>
+    </div>
   </body>
 </html>
