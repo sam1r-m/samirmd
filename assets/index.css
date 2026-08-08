@@ -9,9 +9,9 @@
   --hl-pink: #b02a76;
   --hl-pink-line: rgba(176, 42, 118, 0.42);
   --hl-pink-glow: rgba(176, 42, 118, 0.16);
-  --hl-gold: #7d5a07;
-  --hl-gold-line: rgba(125, 90, 7, 0.42);
-  --hl-gold-glow: rgba(125, 90, 7, 0.16);
+  --hl-gold: #8a6400;
+  --hl-gold-line: rgba(138, 100, 0, 0.42);
+  --hl-gold-glow: rgba(138, 100, 0, 0.16);
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   --measure: 38rem;
@@ -39,9 +39,9 @@
     --hl-pink: #e055a8;
     --hl-pink-line: rgba(224, 85, 168, 0.5);
     --hl-pink-glow: rgba(224, 85, 168, 0.34);
-    --hl-gold: #cf9a1a;
-    --hl-gold-line: rgba(207, 154, 26, 0.5);
-    --hl-gold-glow: rgba(207, 154, 26, 0.32);
+    --hl-gold: #fed34c;
+    --hl-gold-line: rgba(254, 211, 76, 0.5);
+    --hl-gold-glow: rgba(254, 211, 76, 0.34);
   }
 }
 
@@ -55,9 +55,9 @@
   --hl-pink: #e055a8;
   --hl-pink-line: rgba(224, 85, 168, 0.5);
   --hl-pink-glow: rgba(224, 85, 168, 0.34);
-  --hl-gold: #cf9a1a;
-  --hl-gold-line: rgba(207, 154, 26, 0.5);
-  --hl-gold-glow: rgba(207, 154, 26, 0.32);
+  --hl-gold: #fed34c;
+  --hl-gold-line: rgba(254, 211, 76, 0.5);
+  --hl-gold-glow: rgba(254, 211, 76, 0.34);
 }
 
 :root[data-theme="light"] {
@@ -71,9 +71,9 @@
   --hl-pink: #b02a76;
   --hl-pink-line: rgba(176, 42, 118, 0.42);
   --hl-pink-glow: rgba(176, 42, 118, 0.16);
-  --hl-gold: #7d5a07;
-  --hl-gold-line: rgba(125, 90, 7, 0.42);
-  --hl-gold-glow: rgba(125, 90, 7, 0.16);
+  --hl-gold: #8a6400;
+  --hl-gold-line: rgba(138, 100, 0, 0.42);
+  --hl-gold-glow: rgba(138, 100, 0, 0.16);
 }
 
 @view-transition {
@@ -417,7 +417,9 @@ h1 {
   margin: var(--s1) 0 0;
   padding: 0;
   list-style: none;
-  font-size: 0.9375rem;
+  font-family: "IBM Plex Sans", var(--font);
+  font-size: 0.875rem;
+  letter-spacing: 0.005em;
   color: var(--fg-muted);
 }
 

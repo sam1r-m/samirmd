@@ -75,6 +75,10 @@
     });
   }
 
+  function markReady() {
+    document.body.setAttribute("data-gallery", "ready");
+  }
+
   function setView(view) {
     if (VIEWS.indexOf(view) === -1) view = "masonry";
     document.body.setAttribute("data-view", view);
@@ -183,6 +187,7 @@
     savedSort = localStorage.getItem(SORT_KEY) || "newest";
   } catch (e) {}
   setSort(savedSort);
+  markReady();
 
   var sortToggle = document.querySelector(".sort-toggle");
   if (sortToggle) {
