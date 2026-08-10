@@ -27,12 +27,21 @@
   function load(src, dataset) {
     var script = document.createElement("script");
     script.src = src;
+    script.defer = true;
     for (var key in dataset) {
       script.dataset[key] = dataset[key];
     }
     document.head.appendChild(script);
   }
 
-  load("/_vercel/insights/script.js");
-  load("/_vercel/speed-insights/script.js", { route: route || "/" });
+  load("/_vercel/insights/script.js", {
+    sdkn: "@vercel/analytics",
+    sdkv: "2.0.1",
+  });
+
+  load("/_vercel/speed-insights/script.js", {
+    sdkn: "@vercel/speed-insights",
+    sdkv: "2.0.0",
+    route: route || "/",
+  });
 })();
