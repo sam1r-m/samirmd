@@ -48,7 +48,7 @@
   if (!button) return;
 
   var KEY = "samirmd-theme";
-  var COLORS = { light: "#f7f4ed", dark: "#0d0d0f" };
+  var COLORS = { light: "#f7f4ed", dark: "#0d0c0b" };
   var media = window.matchMedia("(prefers-color-scheme: dark)");
   var meta = document.querySelector('meta[name="theme-color"]');
 
