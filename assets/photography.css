@@ -121,13 +121,11 @@ body.page-photography a:hover {
 .gallery-controls {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  flex-wrap: wrap;
   justify-content: flex-end;
 }
 
-.sort-toggle,
-.view-toggle {
+.sort-toggle {
+  position: relative;
   display: inline-flex;
   gap: 0.2rem;
   padding: 0.28rem;
@@ -136,8 +134,23 @@ body.page-photography a:hover {
   border-radius: 999px;
 }
 
-.sort-toggle button,
-.view-toggle button {
+.sort-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 999px;
+  background: var(--photo-sand);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sort-toggle.is-ready .sort-thumb {
+  transition: transform 0.52s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sort-toggle button {
+  position: relative;
+  z-index: 1;
   appearance: none;
   border: 0;
   background: transparent;
@@ -148,27 +161,20 @@ body.page-photography a:hover {
   display: grid;
   place-items: center;
   border-radius: 999px;
+  transition: color 0.4s ease;
 }
 
-.sort-toggle button svg,
-.view-toggle button svg {
+.sort-toggle button svg {
   width: 1rem;
   height: 1rem;
   display: block;
 }
 
-.view-toggle button svg {
-  fill: currentColor;
-}
-
-.sort-toggle button[aria-pressed="true"],
-.view-toggle button[aria-pressed="true"] {
+.sort-toggle button[aria-pressed="true"] {
   color: var(--photo-bg);
-  background: var(--photo-sand);
 }
 
-.sort-toggle button:focus-visible,
-.view-toggle button:focus-visible {
+.sort-toggle button:focus-visible {
   outline: 1.5px solid var(--photo-sand);
   outline-offset: 2px;
 }
@@ -211,19 +217,16 @@ body.page-photography a:hover {
   padding: 2rem 0 8rem;
   overflow: visible;
   min-height: 70vh;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--photo-gap);
 }
 
 body:not([data-gallery="ready"]) .photo-gallery {
   visibility: hidden;
 }
 
-body[data-view="masonry"] .photo-gallery {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--photo-gap);
-}
-
-body[data-view="masonry"] .photo-col {
+.photo-col {
   flex: 1;
   min-width: 0;
   display: flex;
@@ -231,37 +234,10 @@ body[data-view="masonry"] .photo-col {
   gap: var(--photo-gap);
 }
 
-body[data-view="masonry"] .photo-figure {
-  margin: 0;
-  width: 100%;
-}
-
-body[data-view="grid"] .photo-gallery {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--photo-gap);
-  align-items: start;
-}
-
-@media (min-width: 640px) {
-  body[data-view="grid"] .photo-gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  body[data-view="grid"] .photo-gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-body[data-view="grid"] .photo-figure {
-  margin: 0;
-  width: 100%;
-}
-
 .photo-figure {
   position: relative;
+  margin: 0;
+  width: 100%;
 }
 
 .photo-button {
@@ -564,12 +540,21 @@ body.lightbox-open {
     animation-duration: 1ms;
   }
 
+  .sort-thumb,
+  .sort-toggle button,
   .photo-button,
   .photo-button img,
   .photo-caption,
   .lightbox,
   .lightbox-inner {
     transition: none;
+  }
+
+  .photo-button,
+  .photo-button img,
+  .photo-caption,
+  .lightbox,
+  .lightbox-inner {
     filter: none;
     transform: none;
   }

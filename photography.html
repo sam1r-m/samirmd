@@ -27,13 +27,14 @@
     <script src="assets/vercel-insights.js" defer></script>
     <script src="assets/photography.js" defer></script>
   </head>
-  <body class="page-photography" data-view="masonry">
+  <body class="page-photography">
     <main>
       <header class="photo-header">
         <div class="photo-header-top">
           <a class="home-link" href="index.html">Home</a>
           <div class="gallery-controls">
             <div class="sort-toggle" role="group" aria-label="Sort photographs">
+              <span class="sort-thumb" aria-hidden="true"></span>
               <button type="button" data-sort="newest" aria-pressed="true" aria-label="Newest first" title="Newest first">
                 <svg viewBox="0 0 16 16" aria-hidden="true">
                   <path d="M8 2.25v9.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -52,24 +53,6 @@
                   <path d="M10.2 2.4h2.9V5.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                   <path d="M12.9 10.8A5.1 5.1 0 0 1 4.4 11.9L3.3 10.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                   <path d="M5.8 13.6H2.9V10.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-            </div>
-            <div class="view-toggle" role="group" aria-label="Gallery layout">
-              <button type="button" data-view="masonry" aria-pressed="true" aria-label="Masonry layout" title="Masonry">
-                <svg viewBox="0 0 16 16" aria-hidden="true">
-                  <rect x="1" y="1" width="6" height="9" rx="0.5" />
-                  <rect x="9" y="1" width="6" height="5" rx="0.5" />
-                  <rect x="9" y="8" width="6" height="7" rx="0.5" />
-                  <rect x="1" y="12" width="6" height="3" rx="0.5" />
-                </svg>
-              </button>
-              <button type="button" data-view="grid" aria-pressed="false" aria-label="Grid layout" title="Grid">
-                <svg viewBox="0 0 16 16" aria-hidden="true">
-                  <rect x="1" y="1" width="6" height="6" rx="0.5" />
-                  <rect x="9" y="1" width="6" height="6" rx="0.5" />
-                  <rect x="1" y="9" width="6" height="6" rx="0.5" />
-                  <rect x="9" y="9" width="6" height="6" rx="0.5" />
                 </svg>
               </button>
             </div>

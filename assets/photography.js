@@ -17,9 +17,7 @@
   var reduceMotion =
     window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var VIEW_KEY = "samirmd-photo-view";
   var SORT_KEY = "samirmd-photo-sort";
-  var VIEWS = ["masonry", "grid"];
   var SORTS = ["newest", "oldest", "shuffle"];
 
   function columnCount() {
@@ -40,18 +38,10 @@
   }
 
   function applyLayout() {
-    var view = document.body.getAttribute("data-view");
     var cols = gallery.querySelectorAll(".photo-col");
     Array.prototype.forEach.call(cols, function (col) {
       col.parentNode && col.parentNode.removeChild(col);
     });
-
-    if (view !== "masonry") {
-      figures.forEach(function (fig) {
-        gallery.appendChild(fig);
-      });
-      return;
-    }
 
     var n = columnCount();
     var buckets = [];
@@ -75,43 +65,35 @@
     });
   }
 
+  window.addEventListener("resize", function () {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(function () {
+      applyLayout();
+      moveThumb();
+    }, 120);
+  });
+
+  var sortToggle = document.querySelector(".sort-toggle");
+
+  function moveThumb() {
+    if (!sortToggle) return;
+    var thumb = sortToggle.querySelector(".sort-thumb");
+    var active = sortToggle.querySelector("[aria-pressed='true']");
+    if (!thumb || !active) return;
+    thumb.style.width = active.offsetWidth + "px";
+    thumb.style.height = active.offsetHeight + "px";
+    thumb.style.transform =
+      "translate(" + active.offsetLeft + "px, " + active.offsetTop + "px)";
+    if (!sortToggle.classList.contains("is-ready")) {
+      window.requestAnimationFrame(function () {
+        sortToggle.classList.add("is-ready");
+      });
+    }
+  }
+
   function markReady() {
     document.body.setAttribute("data-gallery", "ready");
   }
-
-  function setView(view) {
-    if (VIEWS.indexOf(view) === -1) view = "masonry";
-    document.body.setAttribute("data-view", view);
-    try {
-      localStorage.setItem(VIEW_KEY, view);
-    } catch (e) {}
-    var buttons = document.querySelectorAll(".view-toggle [data-view]");
-    Array.prototype.forEach.call(buttons, function (btn) {
-      var on = btn.getAttribute("data-view") === view;
-      btn.setAttribute("aria-pressed", on ? "true" : "false");
-    });
-    applyLayout();
-  }
-
-  var savedView = "masonry";
-  try {
-    savedView = localStorage.getItem(VIEW_KEY) || "masonry";
-  } catch (e) {}
-  setView(savedView);
-
-  var toggle = document.querySelector(".view-toggle");
-  if (toggle) {
-    toggle.addEventListener("click", function (event) {
-      var btn = event.target.closest("[data-view]");
-      if (!btn || !toggle.contains(btn)) return;
-      setView(btn.getAttribute("data-view"));
-    });
-  }
-
-  window.addEventListener("resize", function () {
-    window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(applyLayout, 120);
-  });
 
   function takenValue(figure) {
     return figure.getAttribute("data-taken") || "";
@@ -180,6 +162,7 @@
       });
     }
     applyOrder(ordered);
+    moveThumb();
   }
 
   var savedSort = "newest";
@@ -189,7 +172,6 @@
   setSort(savedSort);
   markReady();
 
-  var sortToggle = document.querySelector(".sort-toggle");
   if (sortToggle) {
     sortToggle.addEventListener("click", function (event) {
       var btn = event.target.closest("[data-sort]");
